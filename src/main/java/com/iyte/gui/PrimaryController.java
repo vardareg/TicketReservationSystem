@@ -126,7 +126,7 @@ public final class PrimaryController {
         Parent ui = fx.load();
         fx.<CheckoutController>getController()
                 .init(currentUser, () -> { // << callback
-                    System.out.println("afterClose fired");
+                    //System.out.println("afterClose fired");
                     refreshTable();
                     updateCartButton();
                 });
