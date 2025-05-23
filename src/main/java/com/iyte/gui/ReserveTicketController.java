@@ -32,8 +32,8 @@ public class ReserveTicketController {
     public void init(Event e, String user) {
         this.event = e;
         this.username = user;
-
         lblEvent.setText(e.getName());
+        
         categoryBox.getItems().setAll(e.getCategories());
 
         // figure out the max available across all categories
