@@ -54,8 +54,8 @@ public final class PrimaryController {
     private Button btnNewEvent;
     @FXML
     private Button btnDelete;
-    @FXML
-    private Button btnViewRes;
+    // @FXML
+    // private Button btnViewRes;
 
     /* ------------ state ------------ */
     private String currentUser = "guest";
@@ -90,7 +90,7 @@ public final class PrimaryController {
     public void setCurrentUser(String user, boolean isFirm) {
         this.currentUser = user;
         this.firmMode = isFirm;
-        btnViewRes.setVisible(isFirm);
+        // btnViewRes.setVisible(isFirm);
         btnNewEvent.setVisible(isFirm);
         btnDelete.setVisible(isFirm);
     }

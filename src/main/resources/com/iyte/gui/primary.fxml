@@ -46,9 +46,9 @@
       <Button fx:id="btnNewEvent" text="New Event" onAction="#handleNewEvent" visible="false" />
       <Button fx:id="btnDelete" text="Delete Selected" onAction="#handleDeleteEvent" visible="false" />
 
-
+<!-- 
       <Button fx:id="btnViewRes" text="View Reservations"
-         onAction="#handleViewReservations" visible="false" />
+         onAction="#handleViewReservations" visible="false" /> -->
 
    </HBox>
 </VBox>
