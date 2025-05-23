@@ -104,14 +104,6 @@ ticketreservationsystem/
 3. **User books VIP ticket:** Adds to cart and confirms, receives reservation ID.
 4. **Firm checks reservations:** Views all tickets sold for their events.
 
----
-
-| Name              | Role & Contributions                                                                         |
-| ----------------- | -------------------------------------------------------------------------------------------- |
-| **Egehan Vardar** | All development: JavaFX GUI, core logic, data persistence, wiring, coding, and documentation |
-
----
-
 ## License
 
 *This project is for educational use in SEDS 504 (Spring 2025), İzmir Institute of Technology.*
