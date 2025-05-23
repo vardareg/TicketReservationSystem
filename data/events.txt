@@ -1,4 +1,4 @@
 Jazz Festival|2025-08-20|Berlin|Concert|VIP:600.0:16,Regular:300.0:50
 The Phantom Play|2025-09-10|Vienna|Theatre|Front:400.0:10,Balcony:200.0:30
 Tech Conference|2025-11-01|Amsterdam|Conference|VIP:750.0:29,Regular:350.0:100
-GreenTech Expo 2025|2025-12-10|Copenhagen|Conference|VIP:800.0:28,Standard:400.0:100
+GreenTech Expo 2025|2025-12-10|Copenhagen|Conference|VIP:800.0:27,Standard:400.0:93

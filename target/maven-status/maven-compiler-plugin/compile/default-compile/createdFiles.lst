@@ -2,12 +2,12 @@ com\iyte\ticketsystem\model\User.class
 com\iyte\gui\SecondaryController.class
 com\iyte\gui\ReserveTicketController.class
 com\iyte\ticketsystem\model\Reservation.class
+com\iyte\gui\LoginController.class
 com\iyte\gui\UserReservationsController.class
 com\iyte\gui\App.class
 com\iyte\ticketsystem\model\TicketCategory.class
 com\iyte\ticketsystem\TicketService.class
 com\iyte\ticketsystem\util\FileHelper.class
-com\iyte\gui\EventListController.class
 com\iyte\ticketsystem\ServiceLocator.class
 module-info.class
 com\iyte\gui\PrimaryController.class

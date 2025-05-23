@@ -18,13 +18,16 @@ public class ReserveTicketController {
     private Event event;
     private String username;
 
-    @FXML private Label lblEvent;
-    @FXML private ComboBox<TicketCategory> categoryBox;
-    @FXML private Spinner<Integer> qtySpinner;
+    @FXML
+    private Label lblEvent;
+    @FXML
+    private ComboBox<TicketCategory> categoryBox;
+    @FXML
+    private Spinner<Integer> qtySpinner;
 
     /** Called by PrimaryController before showing the dialog */
     public void init(Event e, String user) {
-        this.event    = e;
+        this.event = e;
         this.username = user;
 
         lblEvent.setText(e.getName());
@@ -32,12 +35,11 @@ public class ReserveTicketController {
 
         // figure out the max available across all categories
         int maxAvail = e.getCategories().stream()
-                        .mapToInt(cat -> cat.getAvailable())
-                        .max()
-                        .orElse(1);
+                .mapToInt(cat -> cat.getAvailable())
+                .max()
+                .orElse(1);
 
-        SpinnerValueFactory<Integer> vf =
-            new IntegerSpinnerValueFactory(1, maxAvail);
+        SpinnerValueFactory<Integer> vf = new IntegerSpinnerValueFactory(1, maxAvail);
         qtySpinner.setValueFactory(vf);
     }
 
@@ -48,16 +50,16 @@ public class ReserveTicketController {
 
         // use the stored event & username here:
         var reservation = ServiceLocator.SERVICE
-            .reserve(username, event, chosenCat.getCategoryName(), qty);
+                .reserve(username, event, chosenCat.getCategoryName(), qty);
 
-        System.out.println("Your reservation number: " + reservation.getTs());
+        System.out.println("Reservation saved!  ID: " + reservation.getReservationId());
 
         // close the dialog
-        ((Stage)lblEvent.getScene().getWindow()).close();
+        ((Stage) lblEvent.getScene().getWindow()).close();
     }
 
     @FXML
     private void onCancel(ActionEvent evt) {
-        ((Stage)lblEvent.getScene().getWindow()).close();
+        ((Stage) lblEvent.getScene().getWindow()).close();
     }
 }
