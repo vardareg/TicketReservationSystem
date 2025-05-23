@@ -33,17 +33,32 @@ public class ReserveTicketController {
         this.event = e;
         this.username = user;
         lblEvent.setText(e.getName());
-        
+
+        // 1️⃣ put categories into the combo-box
         categoryBox.getItems().setAll(e.getCategories());
 
-        // figure out the max available across all categories
-        int maxAvail = e.getCategories().stream()
-                .mapToInt(cat -> cat.getAvailable())
-                .max()
-                .orElse(1);
+        // 2️⃣ choose “Standard” / “Standart” if it exists
+        TicketCategory defaultCat = e.getCategories().stream()
+                .filter(c -> {
+                    String n = c.getCategoryName().toLowerCase();
+                    return n.equals("standard") || n.equals("standart");
+                })
+                .findFirst()
+                .orElse(e.getCategories().isEmpty() ? null
+                        : e.getCategories().get(0));
 
-        SpinnerValueFactory<Integer> vf = new IntegerSpinnerValueFactory(1, maxAvail);
-        qtySpinner.setValueFactory(vf);
+        categoryBox.getSelectionModel().select(defaultCat);
+
+        // helper to (re)configure the spinner for a chosen category
+        Runnable refreshSpinner = () -> {
+            TicketCategory sel = categoryBox.getValue();
+            int max = sel == null ? 1 : Math.max(1, sel.getAvailable());
+            qtySpinner.setValueFactory(new IntegerSpinnerValueFactory(1, max, 1));
+        };
+        refreshSpinner.run(); // initial setup
+
+        // 3️⃣ update spinner limits when category changes
+        categoryBox.valueProperty().addListener((obs, oldV, newV) -> refreshSpinner.run());
     }
 
     @FXML
