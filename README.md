@@ -90,11 +90,6 @@ ticketreservationsystem/
 * `com.iyte.ticketsystem.util.FileHelper` – File I/O for data persistence
 
 ---
-
-## Screenshots
-
-*Add screenshots of your main screens here (Login, Search, Reservation, etc.)*
-
 ---
 
 ## Example Usage Scenarios
