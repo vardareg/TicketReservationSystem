@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx"
+   xmlns:fx="http://javafx.com/fxml"
+   fx:controller="com.iyte.gui.PrimaryController">
+   <padding>
+      <Insets top="15" right="15" bottom="15" left="15" />
+   </padding>
+
+   <!-- Search bar -->
+   <HBox spacing="8">
+      <Label text="Search date:" />
+      <DatePicker fx:id="datePicker" />
+      <Button text="Search" onAction="#onSearch" />
+   </HBox>
+
+   <!-- Event results -->
+   <TableView fx:id="eventTable" prefHeight="300" prefWidth="600">
+      <columns>
+         <TableColumn fx:id="nameCol" text="Name" prefWidth="150" />
+         <TableColumn fx:id="dateCol" text="Date" prefWidth="100" />
+         <TableColumn fx:id="locCol" text="Location" prefWidth="150" />
+         <TableColumn fx:id="typeCol" text="Type" prefWidth="100" />
+         <TableColumn fx:id="availCol" text="Available" prefWidth="80" />
+      </columns>
+   </TableView>
+
+   <!-- Reserve button -->
+   <Button fx:id="reserveBtn"
+      text="Reserve Selected" onAction="#onReserve" />
+
+</VBox>

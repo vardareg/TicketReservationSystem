@@ -1,0 +1,7 @@
+{
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "maven.view": "hierarchical",
+    "java.dependency.syncWithFolderExplorer": true,
+    "java.dependency.packagePresentation": "hierarchical",
+    "java.project.explorer.showNonJavaResources": true
+}
