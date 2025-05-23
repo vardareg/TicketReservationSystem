@@ -45,5 +45,11 @@
       <!-- <Button fx:id="btnReserve" text="Reserve" onAction="#handleReserve" /> -->
       <Button fx:id="btnNewEvent" text="New Event" onAction="#handleNewEvent" visible="false" />
       <Button fx:id="btnDelete" text="Delete Selected" onAction="#handleDeleteEvent" visible="false" />
+      <Button fx:id="btnReserve" text="Add to Cart" onAction="#handleReserve" />
+      <Button fx:id="btnCart" text="Cart (0)" onAction="#handleCart" />
+
+      <Button fx:id="btnViewRes" text="View Reservations"
+         onAction="#handleViewReservations" visible="false" />
+
    </HBox>
 </VBox>

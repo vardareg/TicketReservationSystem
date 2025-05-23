@@ -49,10 +49,13 @@ public final class PrimaryController {
     /* ------------ action buttons ------------ */
     @FXML
     private Button btnReserve;
+
     @FXML
     private Button btnNewEvent;
     @FXML
     private Button btnDelete;
+    @FXML
+    private Button btnViewRes;
 
     /* ------------ state ------------ */
     private String currentUser = "guest";
@@ -87,6 +90,7 @@ public final class PrimaryController {
     public void setCurrentUser(String user, boolean isFirm) {
         this.currentUser = user;
         this.firmMode = isFirm;
+        btnViewRes.setVisible(isFirm);
         btnNewEvent.setVisible(isFirm);
         btnDelete.setVisible(isFirm);
     }
@@ -126,7 +130,7 @@ public final class PrimaryController {
         Parent ui = fx.load();
         fx.<CheckoutController>getController()
                 .init(currentUser, () -> { // << callback
-                    //System.out.println("afterClose fired");
+                    // System.out.println("afterClose fired");
                     refreshTable();
                     updateCartButton();
                 });
@@ -159,6 +163,23 @@ public final class PrimaryController {
             return;
         ServiceLocator.SERVICE.deleteEvent(sel);
         refreshTable();
+    }
+
+    @FXML
+    private void handleViewReservations() throws IOException {
+        Event sel = tblEvents.getSelectionModel().getSelectedItem();
+        if (sel == null)
+            return;
+
+        FXMLLoader fx = new FXMLLoader(getClass().getResource("firm_event_reservations.fxml"));
+        Parent ui = fx.load();
+        fx.<FirmEventReservationsController>getController().init(sel);
+
+        Stage dlg = new Stage();
+        dlg.initModality(Modality.APPLICATION_MODAL);
+        dlg.setScene(new Scene(ui));
+        dlg.setTitle("Reservations for \"" + sel.getName() + "\"");
+        dlg.showAndWait();
     }
 
     /* ----------- helpers ----------- */

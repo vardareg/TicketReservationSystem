@@ -72,4 +72,13 @@ public final class TicketService {
     public void save() {
         FileHelper.saveAll(users, events);
     }
+
+    /** All reservations made for the given event (across every user). */
+    public List<Reservation> reservationsForEvent(Event event) {
+        return users.values().stream() // users map already in the service
+                .flatMap(u -> u.getReservations().stream())
+                .filter(r -> r.getEvent().equals(event))
+                .toList();
+    }
+
 }
