@@ -146,7 +146,7 @@ public class FileHelper {
         try (BufferedWriter bw = Files.newBufferedWriter(RES)) {
             for (User u : users.values())
                 for (Reservation r : u.getReservations())
-                    bw.write(r.getReservationId() + "|" + r.getUsername() + "|" + r.getEventName() + "|"
+                    bw.write(r.getReservationId() + "|" + r.getUsername() + "|" + r.getEvent() + "|"
                             + r.getCategoryName() + "|" + r.getQuantity() + "|" + r.getPrice() + "\n");
         } catch (IOException ignored) {
         }

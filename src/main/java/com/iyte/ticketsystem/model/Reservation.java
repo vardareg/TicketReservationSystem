@@ -3,28 +3,30 @@ package com.iyte.ticketsystem.model;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+// src/main/java/com/iyte/ticketsystem/model/Reservation.java
 public class Reservation {
 
     private final String reservationId = UUID.randomUUID().toString();
-    private final String username; // "guest" if not logged-in
-    private final String eventName;
+    private final Event event; // ← NEW
+    private final String username;
     private final String categoryName;
     private final int quantity;
     private final double price;
     private final LocalDateTime ts = LocalDateTime.now();
-
-    private final TicketCategory category; // ← stored reference
+    private final TicketCategory category;
 
     public Reservation(String username, Event e,
             TicketCategory c, int quantity) {
-
+        this.event = e; // ← store reference
         this.username = username;
-        this.eventName = e.getName();
         this.categoryName = c.getCategoryName();
         this.quantity = quantity;
         this.price = c.getPrice() * quantity;
+        this.category = c;
+    }
 
-        this.category = c; // ← **INITIALISE HERE**
+    public Event getEvent() { // ← NEW
+        return event;
     }
 
     /* ------------ getters ------------ */
@@ -38,10 +40,6 @@ public class Reservation {
 
     public String getUsername() {
         return username;
-    }
-
-    public String getEventName() {
-        return eventName;
     }
 
     public String getCategoryName() {
