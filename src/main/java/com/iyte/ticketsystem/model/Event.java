@@ -44,6 +44,10 @@ public class Event {
                 .findFirst();
     }
 
+    public double firstPrice() {
+        return categories.isEmpty() ? 0 : categories.get(0).getPrice();
+    }
+
     // helper
     public void addCategory(TicketCategory c) {
         categories.add(c);

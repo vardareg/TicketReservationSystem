@@ -1,10 +1,13 @@
 package com.iyte.gui;
 
 import com.iyte.ticketsystem.ServiceLocator;
+import com.iyte.ticketsystem.cart.Cart;
+import com.iyte.ticketsystem.cart.CartItem;
 import com.iyte.ticketsystem.model.Event;
 import com.iyte.ticketsystem.model.TicketCategory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
@@ -44,18 +47,17 @@ public class ReserveTicketController {
     }
 
     @FXML
-    private void onConfirm(ActionEvent evt) {
-        TicketCategory chosenCat = categoryBox.getValue();
+    private void onConfirm() {
+        TicketCategory cat = categoryBox.getValue();
         int qty = qtySpinner.getValue();
 
-        // use the stored event & username here:
-        var reservation = ServiceLocator.SERVICE
-                .reserve(username, event, chosenCat.getCategoryName(), qty);
-
-        System.out.println("Reservation saved!  ID: " + reservation.getReservationId());
-
-        // close the dialog
-        ((Stage) lblEvent.getScene().getWindow()).close();
+        try {
+            Cart.get().items().add(new CartItem(event, cat, qty));
+            // close dialog
+            ((Stage) qtySpinner.getScene().getWindow()).close();
+        } catch (Exception ex) {
+            new Alert(Alert.AlertType.ERROR, ex.getMessage()).showAndWait();
+        }
     }
 
     @FXML

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+    fx:controller="com.iyte.gui.CheckoutController" spacing="10">
+    <padding>
+        <Insets top="15" right="15" bottom="15" left="15" />
+    </padding>
+
+    <TableView fx:id="tbl" prefHeight="250">
+        <columns>
+            <TableColumn fx:id="colEvent" text="Event" prefWidth="150" />
+            <TableColumn fx:id="colCat" text="Category" />
+            <TableColumn fx:id="colQty" text="Qty" prefWidth="50" />
+            <TableColumn fx:id="colPrice" text="Price €" prefWidth="80" />
+            <TableColumn fx:id="colTotal" text="Total €" prefWidth="90" />
+        </columns>
+    </TableView>
+
+    <Label fx:id="lblGrand" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Confirm Purchase" onAction="#confirm" />
+        <Button text="Cancel" onAction="#cancel" />
+    </HBox>
+</VBox>
